@@ -80,7 +80,7 @@ export default function About() {
                 Libor Kverek
               </div>
               <div className="text-gray-400 text-sm md:text-base mt-1">
-                Trenér, model, sexsymbol
+                Fitness trenér
               </div>
             </motion.div>
           </motion.div>
