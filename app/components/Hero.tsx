@@ -1,163 +1,148 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
 
-interface Countdown {
-  days: number
-  hours: number
-  minutes: number
-  seconds: number
+// Generate avatar URLs for social proof
+const generateAvatarUrl = (seed: string) => {
+  return `https://api.dicebear.com/7.x/avataaars/svg?seed=${seed}`
 }
 
+const avatarSeeds = [
+  'alice', 'bob', 'charlie', 'diana', 'eve', 'frank', 'grace', 'henry', 
+  'ivy', 'jack', 'kate', 'liam', 'mia', 'noah', 'olivia', 'paul'
+]
+
 export default function Hero() {
-  const [countdown, setCountdown] = useState<Countdown>({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-
-  useEffect(() => {
-    // Set target date (e.g., 7 days from now)
-    const targetDate = new Date()
-    targetDate.setDate(targetDate.getDate() + 7)
-
-    const interval = setInterval(() => {
-      const now = new Date().getTime()
-      const distance = targetDate.getTime() - now
-
-      if (distance > 0) {
-        setCountdown({
-          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((distance % (1000 * 60)) / 1000),
-        })
-      }
-    }, 1000)
-
-    return () => clearInterval(interval)
-  }, [])
-
-  const scrollToNext = () => {
-    const nextSection = document.getElementById('value-props')
-    nextSection?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black">
-      {/* Background effects */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <section className="relative min-h-screen flex flex-col overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
+      {/* Header */}
+      <header className="relative z-20 w-full px-4 sm:px-6 lg:px-8 py-6 flex items-center justify-between">
+        {/* Logo */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center max-w-5xl mx-auto"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-2"
         >
-          {/* Countdown Timer */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="mb-8"
-          >
-            <p className="text-sm font-semibold text-yellow-400 mb-4 tracking-wider uppercase">
-              Speciální Nabídka Končí Za:
-            </p>
-            <div className="flex justify-center items-center gap-4 md:gap-6">
-              <CountdownBox value={countdown.days} label="d" />
-              <span className="text-white text-2xl md:text-4xl font-bold">:</span>
-              <CountdownBox value={countdown.hours} label="h" />
-              <span className="text-white text-2xl md:text-4xl font-bold">:</span>
-              <CountdownBox value={countdown.minutes} label="m" />
-              <span className="text-white text-2xl md:text-4xl font-bold">:</span>
-              <CountdownBox value={countdown.seconds} label="s" />
-            </div>
-            <p className="text-yellow-400 text-lg md:text-xl font-bold mt-4">
-              Speciální Nabídka: Získejte až 50% slevu
-            </p>
-          </motion.div>
+          <span className="text-white text-2xl font-semibold tracking-tight">mentorship</span>
+          <div className="border-2 border-white rounded px-2 py-1">
+            <span className="text-white text-xl font-semibold">2.0</span>
+          </div>
+        </motion.div>
 
-          {/* Main Heading */}
-          <motion.h1
+        {/* Shop All Button */}
+        <motion.button
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
+        >
+          Shop all
+        </motion.button>
+      </header>
+
+      {/* Main Content */}
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
+        <div className="w-full max-w-6xl mx-auto">
+          {/* Social Proof Banner */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-12 flex items-center justify-center"
           >
-            Růst Vašeho Fitness Podnikání{' '}
-            <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
-              Systémy & Strategie
-            </span>
-          </motion.h1>
+            <div className="bg-gray-800 rounded-lg px-6 py-4 flex items-center gap-4">
+              {/* Avatars */}
+              <div className="flex -space-x-2">
+                {avatarSeeds.slice(0, 12).map((seed, index) => (
+                  <div
+                    key={seed}
+                    className="w-8 h-8 rounded-full border-2 border-gray-800 overflow-hidden bg-gray-700"
+                    style={{ zIndex: avatarSeeds.length - index }}
+                  >
+                    <img
+                      src={generateAvatarUrl(seed)}
+                      alt={`Avatar ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+              {/* Text */}
+              <span className="text-white text-sm sm:text-base font-medium whitespace-nowrap">
+                Join 12,000+ online coaches and business owners
+              </span>
+            </div>
+          </motion.div>
 
+          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center text-white text-sm sm:text-base font-medium tracking-wider uppercase mb-6"
           >
-            Růst vašeho online fitness podnikání nemusí být složitý. Ukážu vám, jak vytvořit značku, 
-            vybudovat publikum a získat armádu loajálních, platících klientů{' '}
-            <span className="text-yellow-400 font-semibold">bez ztráty let hraním na slepo</span>.
+            THE STEP BY STEP HOW TO GUIDE
           </motion.p>
 
-          {/* CTA Button */}
-          <motion.div
+          {/* Main Headline */}
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-center text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 max-w-5xl mx-auto"
           >
-            <motion.a
-              href="#pricing"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold text-lg rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              Zjistit Více
-            </motion.a>
-            <motion.a
-              href="#features"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold text-lg rounded-lg hover:bg-white hover:text-black transition-all duration-300"
-            >
-              Prohlédnout Program
-            </motion.a>
-          </motion.div>
-        </motion.div>
+            Grow Your Business With The Systems & Strategies I've Personally Used To Generate 8-Figures in Online Sales.
+          </motion.h1>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer"
-          onClick={scrollToNext}
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="flex flex-col items-center text-white"
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-center text-white text-base sm:text-lg md:text-xl leading-relaxed mb-12 max-w-4xl mx-auto"
           >
-            <span className="text-sm mb-2">Scroll</span>
-            <ChevronDown className="w-6 h-6" />
+            Growing your online presence doesn't have to feel scammy, transactional, or inauthentic. I'll show you how to create a brand for your business online, build an audience, and create an army of loyal, paying customers without wasting years playing trial and error.
+          </motion.p>
+
+          {/* Video/Image Frame */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="w-full max-w-4xl mx-auto rounded-lg overflow-hidden bg-gray-900"
+          >
+            <div className="relative w-full aspect-video bg-gray-800 flex items-center justify-center">
+              {/* Placeholder for video - replace with actual video/image */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                <div className="text-center text-gray-500">
+                  <svg
+                    className="w-16 h-16 mx-auto mb-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <p className="text-sm">Video placeholder</p>
+                </div>
+              </div>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
-  )
-}
-
-function CountdownBox({ value, label }: { value: number; label: string }) {
-  return (
-    <div className="bg-black/50 backdrop-blur-sm border border-yellow-400/30 rounded-lg p-4 md:p-6 min-w-[70px] md:min-w-[100px]">
-      <div className="text-3xl md:text-5xl font-bold text-yellow-400 mb-1">
-        {String(value).padStart(2, '0')}
-      </div>
-      <div className="text-xs md:text-sm text-gray-400 uppercase tracking-wider">{label}</div>
-    </div>
   )
 }
 
