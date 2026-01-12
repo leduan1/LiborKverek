@@ -11,12 +11,28 @@ export default function About() {
     <section id="o-mne" ref={ref} className="py-20 md:py-32 bg-gradient-to-br from-black via-gray-900 to-black">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Image - First on mobile, second on desktop */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative order-1 lg:order-2 flex justify-start lg:justify-end"
+          >
+            <div className="relative rounded-2xl overflow-hidden w-1/2 lg:w-full">
+              <img
+                src="/IMG_9932.PNG"
+                alt="Libor Kverek"
+                className="w-full h-auto rounded-2xl object-cover"
+              />
+            </div>
+          </motion.div>
+
           {/* Left Column - Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.8 }}
-            className="space-y-6"
+            className="space-y-6 order-2 lg:order-1"
           >
             {/* Small Heading */}
             <motion.p
@@ -67,22 +83,6 @@ export default function About() {
                 Trenér, model, sexsymbol
               </div>
             </motion.div>
-          </motion.div>
-
-          {/* Right Column - Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="relative rounded-2xl overflow-hidden">
-              <img
-                src="/IMG_9932.PNG"
-                alt="Libor Kverek"
-                className="w-full h-auto rounded-2xl object-cover"
-              />
-            </div>
           </motion.div>
         </div>
       </div>
