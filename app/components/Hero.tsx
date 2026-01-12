@@ -37,7 +37,7 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200"
         >
-          Shop all
+          Obchod
         </motion.button>
       </header>
 
@@ -70,7 +70,7 @@ export default function Hero() {
               </div>
               {/* Text */}
               <span className="text-white text-sm sm:text-base font-medium whitespace-nowrap">
-                Join 12,000+ online coaches and business owners
+                Připojte se k 12 000+ online trenérům a majitelům fitness podniků
               </span>
             </div>
           </motion.div>
@@ -82,7 +82,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-center text-white text-sm sm:text-base font-medium tracking-wider uppercase mb-6"
           >
-            THE STEP BY STEP HOW TO GUIDE
+            PRŮVODCE KROK ZA KROKEM
           </motion.p>
 
           {/* Main Headline */}
@@ -92,7 +92,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-center text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 max-w-5xl mx-auto"
           >
-            Grow Your Business With The Systems & Strategies I've Personally Used To Generate 8-Figures in Online Sales.
+            Rozviňte Své Fitness Podnikání Pomocí Systémů & Strategií, Které Jsem Osobně Použil K Dosažení 8-Místných Tržeb V Online Prodeji.
           </motion.h1>
 
           {/* Description */}
@@ -102,42 +102,25 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-center text-white text-base sm:text-lg md:text-xl leading-relaxed mb-12 max-w-4xl mx-auto"
           >
-            Growing your online presence doesn't have to feel scammy, transactional, or inauthentic. I'll show you how to create a brand for your business online, build an audience, and create an army of loyal, paying customers without wasting years playing trial and error.
+            Budování vaší online přítomnosti nemusí působit podvodně, transakčně nebo neautenticky. Ukážu vám, jak vytvořit značku pro vaše fitness podnikání online, vybudovat publikum a vytvořit armádu loajálních, platících klientů bez ztráty let hraním na slepo.
           </motion.p>
 
-          {/* Video/Image Frame */}
+          {/* Video Frame */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="w-full max-w-4xl mx-auto rounded-lg overflow-hidden bg-gray-900"
+            className="w-full max-w-4xl mx-auto rounded-lg overflow-hidden"
           >
-            <div className="relative w-full aspect-video bg-gray-800 flex items-center justify-center">
-              {/* Placeholder for video - replace with actual video/image */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <svg
-                    className="w-16 h-16 mx-auto mb-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <p className="text-sm">Video placeholder</p>
-                </div>
-              </div>
+            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute top-0 left-0 w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/7rQAqhiVE18?si=_0ugcEKZ7HyfSNUg"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
             </div>
           </motion.div>
         </div>
