@@ -86,11 +86,11 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="text-white text-base md:text-lg font-semibold tracking-wider uppercase mb-4">
+          <p className="text-gray-400 text-sm sm:text-base lg:text-[22px] font-medium tracking-wider uppercase mb-4">
             JSI READY UDĚLAT ZMĚNU?
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-            VYBER SI SLUŽBU A VYPLŇ<br />KRÁTKÝ FORMULÁŘ
+            Vyber si službu a vyplň<br />krátký formulář
           </h2>
         </motion.div>
 

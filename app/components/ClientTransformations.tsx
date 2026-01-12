@@ -159,7 +159,7 @@ export default function ClientTransformations() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="text-gray-400 text-sm sm:text-base font-medium tracking-wider uppercase mb-4">
+          <p className="text-gray-400 text-sm sm:text-base lg:text-[22px] font-medium tracking-wider uppercase mb-4">
             PROMĚNY KLIENTŮ
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">

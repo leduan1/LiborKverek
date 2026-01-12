@@ -23,8 +23,7 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-sm sm:text-base font-medium tracking-wider uppercase"
-              style={{ color: 'var(--color-gray-300)' }}
+              className="text-gray-400 text-sm sm:text-base lg:text-[22px] font-medium tracking-wider uppercase"
             >
               O MNĚ
             </motion.p>
@@ -36,7 +35,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-white"
             >
-              KDO JSEM?
+              Kdo jsem
             </motion.h2>
 
             {/* Paragraphs */}

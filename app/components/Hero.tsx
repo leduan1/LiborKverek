@@ -223,7 +223,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center text-sm sm:text-base font-medium tracking-wider uppercase mb-6"
+            className="text-center text-sm sm:text-base lg:text-[22px] font-medium tracking-wider uppercase mb-6"
             style={{ color: 'var(--color-gray-300)' }}
           >
             PRŮVODCE KROK ZA KROKEM
