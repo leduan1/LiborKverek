@@ -4,6 +4,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;
   --background-end-rgb: 255, 255, 255;
+  --color-gray-300: #d1d5db;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -51,4 +52,8 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+/* Remove left and top from Next.js portal */
+nextjs-portal {
 }

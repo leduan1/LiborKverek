@@ -38,10 +38,10 @@ const faqs = [
 export default function FAQ() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section id="faq" ref={ref} className="py-20 md:py-32 bg-white">
+    <section id="faq" ref={ref} className="py-20 md:py-32" style={{ backgroundColor: '#0e0f12' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -49,9 +49,9 @@ export default function FAQ() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             Často Kladené{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-white">
               Otázky
             </span>
           </h2>
@@ -68,29 +68,33 @@ export default function FAQ() {
             >
               <motion.button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full bg-gradient-to-r from-gray-50 to-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 text-left border border-gray-200"
+                className="w-full bg-black rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 text-left border border-gray-800 overflow-hidden"
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 pr-8">{faq.question}</h3>
+                  <h3 className="text-lg md:text-xl font-bold text-white pr-8">{faq.question}</h3>
                   <motion.div
                     animate={{ rotate: openIndex === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
                   >
-                    <ChevronDown className="w-6 h-6 text-gray-600 flex-shrink-0" />
+                    <ChevronDown className="w-6 h-6 text-gray-400 flex-shrink-0" />
                   </motion.div>
                 </div>
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                   {openIndex === index && (
                     <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="mt-4 pt-4 border-t border-gray-200"
+                      initial={{ opacity: 0, maxHeight: 0 }}
+                      animate={{ opacity: 1, maxHeight: 1000 }}
+                      exit={{ opacity: 0, maxHeight: 0 }}
+                      transition={{ 
+                        duration: 0.5, 
+                        ease: [0.4, 0, 0.2, 1],
+                        opacity: { duration: 0.3 }
+                      }}
+                      className="mt-4 pt-4 border-t border-gray-800 overflow-hidden"
                     >
-                      <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                      <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

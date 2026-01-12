@@ -19,7 +19,7 @@ export default function CTA() {
     <section ref={ref} className="py-20 md:py-32 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+      <div className="absolute right-0 bottom-0 bg-gradient-to-t from-black/20 to-transparent"></div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
