@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -54,4 +52,3 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-
