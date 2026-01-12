@@ -23,8 +23,9 @@ const FAQ = dynamic(() => import('@/app/components/FAQ'), {
 const CTA = dynamic(() => import('@/app/components/CTA'), {
   loading: () => <div className="h-screen" />,
 })
+// StickyCTA is client-side only
 const StickyCTA = dynamic(() => import('@/app/components/StickyCTA'), {
-  ssr: false,
+  loading: () => null,
 })
 
 export default function Home() {
@@ -42,4 +43,3 @@ export default function Home() {
     </main>
   )
 }
-
