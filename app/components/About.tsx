@@ -8,7 +8,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="o-mne" ref={ref} className="py-20 md:py-32 bg-gradient-to-br from-black via-gray-900 to-black">
+    <section id="o-mne" ref={ref} className="py-20 md:py-32 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image - First on mobile, second on desktop */}

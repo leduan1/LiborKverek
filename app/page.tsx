@@ -24,9 +24,11 @@ const Contact = dynamic(() => import('@/app/components/Contact'), {
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Hero />
-      <ValueProps />
-      <About />
+      <div className="relative" style={{ background: 'linear-gradient(to bottom right, #000000, #111827, #000000)', backgroundAttachment: 'fixed', backgroundSize: 'cover' }}>
+        <Hero />
+        <ValueProps />
+        <About />
+      </div>
       <Reviews />
       <ClientTransformations />
       <FAQ />

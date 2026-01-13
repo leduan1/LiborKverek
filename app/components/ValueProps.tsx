@@ -89,7 +89,7 @@ export default function ValueProps() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="value-props" ref={ref} className="py-20 md:py-32 bg-gradient-to-br from-black via-gray-900 to-black">
+    <section id="value-props" ref={ref} className="py-20 md:py-32 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

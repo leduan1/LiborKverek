@@ -49,7 +49,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black pt-20">
+    <section className="relative min-h-screen flex flex-col overflow-hidden pt-20">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 w-full py-4 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto flex items-center justify-between bg-black/80 backdrop-blur-md rounded-2xl px-4 sm:px-6 py-4" style={{ boxShadow: '0 1px 14px #fff3' }}>
