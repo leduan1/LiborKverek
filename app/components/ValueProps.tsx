@@ -7,9 +7,9 @@ import { Check, ArrowRight } from 'lucide-react'
 
 const pricingPlans = [
   {
-    title: 'COACHING+',
+    title: 'COACHING',
     titleColor: 'text-blue-400',
-    slug: 'coaching-plus',
+    slug: 'coaching',
     features: [
       '1 společný trénink měsíčně',
       'Jídelníček',
@@ -17,43 +17,6 @@ const pricingPlans = [
       'Video vysvětlivky cviků',
       '2x týdně kontroly',
       'WhatsApp chat',
-    ],
-    price: '2500,- / 1 měsíc',
-  },
-  {
-    title: 'COACHING CLASSIC',
-    titleColor: 'text-white',
-    slug: 'coaching-classic',
-    features: [
-      'Jídelníček',
-      'Tréninkový plán na míru',
-      'Video vysvětlivky cviků',
-      '2x týdně kontroly',
-      'WhatsApp chat',
-    ],
-    price: '2000,- / 1 měsíc',
-  },
-  {
-    title: 'COACHING STUDENT',
-    titleColor: 'text-white',
-    slug: 'coaching-student',
-    features: [
-      'Jídelníček',
-      'Tréninkový plán na míru',
-      'Video vysvětlivky cviků',
-      '2x týdně kontroly',
-      'WhatsApp chat',
-    ],
-    price: '2000,- / 1. měsíc, dále 1500,-',
-  },
-  {
-    title: 'PORADENSTVÍ',
-    titleColor: 'text-white',
-    slug: 'poradenstvi',
-    features: [
-      'Suplementace',
-      'Optimalizace zdraví',
-      'Odběry',
     ],
     price: '2500,- / 1 měsíc',
   },
@@ -68,19 +31,19 @@ const pricingPlans = [
       '2x týdně kontroly',
       'WhatsApp chat',
     ],
-    price: '1500,- / 1 měsíc',
+    price: '2000,- / 1 měsíc',
   },
   {
     title: 'TRÉNINKOVÝ PLÁN',
     titleColor: 'text-white',
     slug: 'treninkovy-plan',
     features: [
-      'Jednorázový',
+      'Jednorázový nebo měsíčně',
       'Na míru dle stanovených cílů',
       'Na míru dle vybavení',
       'Na míru dle časových možností',
     ],
-    price: '2000,-',
+    price: '1500,- / jednorázově nebo měsíčně',
   },
 ]
 
@@ -97,11 +60,11 @@ export default function ValueProps() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="text-gray-400 text-sm sm:text-base lg:text-[22px] font-medium tracking-wider uppercase mb-4">
-            DOSÁHNI SVÉHO POTENCIÁLU
+          <p className="text-gray-400 text-sm sm:text-base lg:text-[22px] font-medium tracking-wider mb-4">
+            Zde je to, co získáte, abyste byli konečně hrdí na to, co vidíte v zrcadle:
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Online coaching
+            Tady je přesně to, co dostanete
           </h2>
         </motion.div>
 

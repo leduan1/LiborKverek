@@ -7,19 +7,13 @@ import { useRef } from 'react'
 import { ChevronDown } from 'lucide-react'
 
 const planNames: Record<string, string> = {
-  'coaching-plus': 'COACHING+',
-  'coaching-classic': 'COACHING CLASSIC',
-  'coaching-student': 'COACHING STUDENT',
-  'poradenstvi': 'PORADENSTVÍ',
+  'coaching': 'COACHING',
   'jidelnicek': 'JÍDELNÍČEK',
   'treninkovy-plan': 'TRÉNINKOVÝ PLÁN',
 }
 
 const services = [
-  'COACHING+',
-  'COACHING CLASSIC',
-  'COACHING STUDENT',
-  'PORADENSTVÍ',
+  'COACHING',
   'JÍDELNÍČEK',
   'TRÉNINKOVÝ PLÁN',
 ]
