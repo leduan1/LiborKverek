@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 
 // WhatsApp číslo Libora (bez mezer a s předvolbou)
-const WHATSAPP_NUMBER = '420XXXXXXXXX' // TODO: Nahradit skutečným číslem
+const WHATSAPP_NUMBER = '420734736424'
 const DEFAULT_MESSAGE = 'Ahoj Libore, mám zájem o spolupráci. Můžeš mi prosím poslat více informací?'
 
 export default function WhatsAppButton() {
