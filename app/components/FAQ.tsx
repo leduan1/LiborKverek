@@ -6,32 +6,24 @@ import { ChevronDown } from 'lucide-react'
 
 const faqs = [
   {
-    question: 'Pro koho je tento kurz?',
-    answer: 'Tento kurz je určen pro jakéhokoli majitele podniku, který chce prodávat více online. Kondenzuje roky poznatků, aby vám ukázal, jak vybudovat publikum a monetizovat pomocí osvědčených blueprintů, které stále používám dodnes.',
+    question: 'Není 2 500 Kč měsíčně moc?',
+    answer: 'Pojďme počítat. Osobní trenér ve fitku stojí cca 800–1000 Kč za hodinu. Kdybys s ním cvičil 8x měsíčně, zaplatíš až 8 000 Kč a to bez jídelníčku a podpory na telefonu. Mých 2 500 Kč je investice cca 80 Kč na den. To je méně než jedno kafe a sendvič na pumpě. Otázka zní: Stojí ti tvé zdraví, sebevědomí a energie za cenu jednoho kafe denně?',
   },
   {
-    question: 'Bojím se, že nedostanu online klienty, pomůže mi to?',
-    answer: 'Ano - klíčové zaměření kurzu je, jak získat více klientů. Kurz pokrývá všechny aspekty získávání a konverze online klientů pomocí osvědčených strategií a systémů.',
+    question: 'Musím chodit do fitka?',
+    answer: 'Nemusíš. Pokud chceš cvičit doma, sestavím ti plnohodnotný plán na doma. Pokud máš rád fitko, využijeme ho naplno. Plán se přizpůsobí tobě, ne naopak.',
   },
   {
-    question: 'Jaké jsou nové moduly, které přicházejí?',
-    answer: 'Vždy hledám způsoby, jak zlepšit kurz přidáním nových modulů a nových kurzů na základě zpětné vazby komunity. Kurz roste s lidmi, kteří jsou jeho součástí.',
+    question: 'Mám zdravotní omezení (bolest zad, kolen). Vadí to?',
+    answer: 'Naopak, je to důvod začít cvičit chytře. Díky mým zkušenostem upravíme cviky tak, abychom problémové partie nepřetěžovali, ale naopak posílili a zbavili tě bolesti.',
   },
   {
-    question: 'Je to pouze pro Českou republiku?',
-    answer: 'Ne, toto je pro kohokoli na světě, kdo chce začít, škálovat a růst svůj online podnik. Všechny strategie jsou aplikovatelné globálně.',
+    question: 'Budu si muset vařit zvlášť pro sebe a pro rodinu?',
+    answer: 'Vůbec ne. Mám rád efektivitu. Ukážu ti, jak jíst zdravě a chutně tak, aby to mohla jíst celá rodina, nebo jak si jídlo snadno upravit. Nechci, abys strávil půl dne u plotny v kuchyni.',
   },
   {
-    question: 'Budu moci mluvit s Liborem?',
-    answer: 'Ano - budu v komunitě odpovídat na jakékoli otázky a můžete si rezervovat 1-2-1 hovor se mnou za dodatečný poplatek.',
-  },
-  {
-    question: 'Je to pouze pro kouče?',
-    answer: 'Obsah uvnitř Mentoringu 2.0 se vztahuje na JAKÉHOKOLI majitele podniku, který chce vybudovat online přítomnost.',
-  },
-  {
-    question: 'Už mám nějaké zkušenosti online. Může mi to pomoci?',
-    answer: 'Budeme s vámi pracovat na zlepšení vašich silných stránek a supernabití vašich slabých stránek. Pokud chcete růst online, tento kurz vám pomůže právě to udělat.',
+    question: 'Co když to na mě nebude fungovat?',
+    answer: 'Za 500+ klientů jsem nezažil nikoho, kdo by poctivě dodržoval plán, komunikoval se mnou a neměl výsledky. Pokud budeš upřímný a budeš makat, výsledky přijdou. Garantuji ti, že do toho dám 100 %. To samé čekám od tebe.',
   },
 ]
 
@@ -41,7 +33,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section id="faq" ref={ref} className="py-20 md:py-32" style={{ backgroundColor: '#0e0f12' }}>
+    <section id="faq" ref={ref} className="pt-20 md:pt-32" style={{ backgroundColor: '#0e0f12' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -50,10 +42,7 @@ export default function FAQ() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Často Kladené{' '}
-            <span className="text-white">
-              Otázky
-            </span>
+            Často se mě ptáte (FAQ)
           </h2>
         </motion.div>
 
@@ -102,6 +91,21 @@ export default function FAQ() {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-16"
+        >
+          <a
+            href="#kontakt"
+            className="inline-block px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-xl transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-blue-600/25"
+          >
+            Chci proměnu
+          </a>
+        </motion.div>
       </div>
     </section>
   )

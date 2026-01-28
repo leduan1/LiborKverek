@@ -223,10 +223,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center text-sm sm:text-base lg:text-[22px] font-medium tracking-wider uppercase mb-6"
+            className="text-center text-sm sm:text-base lg:text-[22px] font-medium tracking-wider mb-6"
             style={{ color: 'var(--color-gray-300)' }}
           >
-            PRŮVODCE KROK ZA KROKEM
+            Průvodce krok za krokem
           </motion.p>
 
           {/* Main Headline */}
@@ -236,7 +236,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-center text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 max-w-5xl mx-auto"
           >
-            Změň svou postavu chytře a udržitelně — s osobním plánem, který funguje.
+            Přestaň se trestat za to, že "nemáš pevnou vůli". Tvůj problém není lenost, ale špatný plán.
           </motion.h1>
 
           {/* Description */}
@@ -246,7 +246,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-center text-white text-base sm:text-lg md:text-xl leading-relaxed mb-12 max-w-4xl mx-auto"
           >
-            Jsem Libor Kverek, fitness trenér, který ti dá reálný plán, podporu a kontrolu, díky kterým konečně dosáhneš výsledků bez nesmyslných diet a zbytečných komplikací. Zhubni tuk, naber svaly a získej sebevědomí díky tréninku a stravě šité přímo tobě.
+            Získej strategii šitou na míru přímo tvému životu a mé osobní vedení, které ti nedovolí selhat. I když máš málo času a nulovou chuť trávit hodiny v kuchyni a posilovně.
           </motion.p>
 
           {/* Video Frame */}

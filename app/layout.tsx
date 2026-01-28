@@ -27,7 +27,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://api.dicebear.com" />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased" suppressHydrationWarning>{children}</body>
     </html>
   )
 }

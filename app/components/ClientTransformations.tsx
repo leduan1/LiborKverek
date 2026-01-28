@@ -76,10 +76,8 @@ export default function ClientTransformations() {
     return (imageWidth + gap) * row2Images.length
   }, [row2Images.length])
 
-  // Spustit animace při načtení
+  // Spustit animace okamžitě po načtení komponenty
   useEffect(() => {
-    if (!isInView) return
-
     // První řada - zleva doprava
     animation1Ref.current = animate(x1, -totalWidthRow1, {
       repeat: Infinity,
@@ -100,12 +98,10 @@ export default function ClientTransformations() {
       if (animation1Ref.current) animation1Ref.current.stop()
       if (animation2Ref.current) animation2Ref.current.stop()
     }
-  }, [isInView, totalWidthRow1, totalWidthRow2, x1, x2])
+  }, [totalWidthRow1, totalWidthRow2, x1, x2])
 
   // Pozastavit/pokračovat při hoveru
   useEffect(() => {
-    if (!isInView) return
-
     if (isHoveredRow1) {
       if (animation1Ref.current) {
         animation1Ref.current.stop()
@@ -124,11 +120,9 @@ export default function ClientTransformations() {
         from: startX,
       })
     }
-  }, [isHoveredRow1, totalWidthRow1, x1, isInView])
+  }, [isHoveredRow1, totalWidthRow1, x1])
 
   useEffect(() => {
-    if (!isInView) return
-
     if (isHoveredRow2) {
       if (animation2Ref.current) {
         animation2Ref.current.stop()
@@ -148,10 +142,10 @@ export default function ClientTransformations() {
         from: startX,
       })
     }
-  }, [isHoveredRow2, totalWidthRow2, x2, isInView])
+  }, [isHoveredRow2, totalWidthRow2, x2])
 
   return (
-    <section id="promeny-klientu" ref={ref} className="py-20 md:py-32" style={{ backgroundColor: '#0e0f12' }}>
+    <section id="promeny-klientu" ref={ref} className="pt-20 md:pt-32" style={{ backgroundColor: '#0e0f12' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -159,11 +153,11 @@ export default function ClientTransformations() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="text-gray-400 text-sm sm:text-base lg:text-[22px] font-medium tracking-wider uppercase mb-4">
-            PROMĚNY KLIENTŮ
+          <p className="text-gray-400 text-sm sm:text-base lg:text-[22px] font-medium tracking-wider mb-4">
+            Proměny klientů
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-            Skutečné proměny, skutečné výsledky
+            Podívejte se, co se stane, když vyměníte &quot;pokusy&quot; za Systém
           </h2>
         </motion.div>
 
@@ -229,6 +223,21 @@ export default function ClientTransformations() {
             ))}
           </motion.div>
         </div>
+
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-16"
+        >
+          <a
+            href="#kontakt"
+            className="inline-block px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-xl transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-blue-600/25"
+          >
+            Chci proměnu
+          </a>
+        </motion.div>
       </div>
     </section>
   )

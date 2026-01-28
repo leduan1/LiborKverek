@@ -86,7 +86,7 @@ export default function Reviews() {
   }, [isModalOpen])
 
   return (
-    <section id="reviews" ref={ref} className="py-20 md:py-32" style={{ backgroundColor: '#0e0f12' }}>
+    <section id="reviews" ref={ref} className="pt-20 md:pt-32" style={{ backgroundColor: '#0e0f12' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -94,7 +94,7 @@ export default function Reviews() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="text-gray-400 text-sm sm:text-base lg:text-[22px] font-medium tracking-wider uppercase mb-4">
+          <p className="text-gray-400 text-sm sm:text-base lg:text-[22px] font-medium tracking-wider mb-4">
             Recenze klientů
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
@@ -124,6 +124,21 @@ export default function Reviews() {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-16"
+        >
+          <a
+            href="#kontakt"
+            className="inline-block px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg rounded-xl transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-blue-600/25"
+          >
+            Chci proměnu
+          </a>
+        </motion.div>
       </div>
 
       {/* Modal with Carousel */}

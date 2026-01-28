@@ -28,12 +28,12 @@ export default function Contact() {
     email: '',
     phone: '',
     age: '',
-    weight: '',
     height: '',
-    occupation: '',
-    physicalActivity: '',
-    ambitions: '',
-    dietaryHabits: '',
+    weight: '',
+    currentGoals: '',
+    primaryGoal90Days: '',
+    startDate: '',
+    cooperationLength: '',
     consent: false,
   })
 
@@ -72,7 +72,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="kontakt" ref={ref} className="py-20 md:py-32" style={{ backgroundColor: '#0e0f12' }}>
+    <section id="kontakt" ref={ref} className="pt-20 md:pt-32 pb-20 md:pb-32" style={{ backgroundColor: '#0e0f12' }}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -80,7 +80,7 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="text-gray-400 text-sm sm:text-base lg:text-[22px] font-medium tracking-wider uppercase mb-4">
+          <p className="text-gray-400 text-sm sm:text-base lg:text-[22px] font-medium tracking-wider mb-4">
             JSI READY UDĚLAT ZMĚNU?
           </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
@@ -144,7 +144,7 @@ export default function Contact() {
 
                 <div>
                   <label htmlFor="phone" className="block text-gray-300 font-medium mb-2">
-                    Telefonní číslo
+                    Tel. číslo
                   </label>
                   <input
                     type="tel"
@@ -160,34 +160,18 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="weight" className="block text-gray-300 font-medium mb-2">
-                    Hmotnost
+                  <label htmlFor="height" className="block text-gray-300 font-medium mb-2">
+                    Výška
                   </label>
                   <input
                     type="text"
-                    id="weight"
-                    name="weight"
-                    value={formData.weight}
+                    id="height"
+                    name="height"
+                    value={formData.height}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600"
                     style={{ backgroundColor: 'rgb(29, 32, 37)' }}
-                    placeholder="Tvá hmotnost (nejlépe nalačno)"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="occupation" className="block text-gray-300 font-medium mb-2">
-                    Povolání
-                  </label>
-                  <input
-                    type="text"
-                    id="occupation"
-                    name="occupation"
-                    value={formData.occupation}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                    style={{ backgroundColor: 'rgb(29, 32, 37)' }}
-                    placeholder="Tvé povolání (nebo studium)"
+                    placeholder="Tvá výška"
                   />
                 </div>
               </div>
@@ -196,7 +180,7 @@ export default function Contact() {
               <div className="space-y-6">
                 <div>
                   <label htmlFor="email" className="block text-gray-300 font-medium mb-2">
-                    Email
+                    E-mail
                   </label>
                   <input
                     type="email"
@@ -228,70 +212,89 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="height" className="block text-gray-300 font-medium mb-2">
-                    Výška
+                  <label htmlFor="weight" className="block text-gray-300 font-medium mb-2">
+                    Hmotnost
                   </label>
                   <input
                     type="text"
-                    id="height"
-                    name="height"
-                    value={formData.height}
+                    id="weight"
+                    name="weight"
+                    value={formData.weight}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600"
                     style={{ backgroundColor: 'rgb(29, 32, 37)' }}
-                    placeholder="Tvá výška"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="physicalActivity" className="block text-gray-300 font-medium mb-2">
-                    Fyzická aktivita / jak často, jak dlouho? Sporty?
-                  </label>
-                  <input
-                    type="text"
-                    id="physicalActivity"
-                    name="physicalActivity"
-                    value={formData.physicalActivity}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                    style={{ backgroundColor: 'rgb(29, 32, 37)' }}
-                    placeholder="Zadej fyzickou aktivitu"
+                    placeholder="Tvá hmotnost"
                   />
                 </div>
               </div>
             </div>
 
-            {/* Ambitions Text Area */}
+            {/* Current Goals */}
             <div>
-              <label htmlFor="ambitions" className="block text-gray-300 font-medium mb-2">
-                Jaké máš se svojí postavou ambice, co bys s ní chtěl dělat?
+              <label htmlFor="currentGoals" className="block text-gray-300 font-medium mb-2">
+                Aktuální cíle
               </label>
-              <textarea
-                id="ambitions"
-                name="ambitions"
-                value={formData.ambitions}
+              <input
+                type="text"
+                id="currentGoals"
+                name="currentGoals"
+                value={formData.currentGoals}
                 onChange={handleChange}
-                rows={6}
-                className="w-full px-4 py-3 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 resize-y"
+                className="w-full px-4 py-3 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600"
                 style={{ backgroundColor: 'rgb(29, 32, 37)' }}
-                placeholder="Redukce tuku/hmotnosti, nabírání svalů, zlepšení kondice, náprava pohybového aparátu, etc."
+                placeholder="Jaké jsou tvé aktuální cíle?"
               />
             </div>
 
-            {/* Dietary Habits Text Area */}
+            {/* Two Column Layout for Start Date and Cooperation Length */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="startDate" className="block text-gray-300 font-medium mb-2">
+                  Kdy bys chtěl začít?
+                </label>
+                <input
+                  type="text"
+                  id="startDate"
+                  name="startDate"
+                  value={formData.startDate}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  style={{ backgroundColor: 'rgb(29, 32, 37)' }}
+                  placeholder="Např. co nejdříve, od příštího týdne..."
+                />
+              </div>
+
+              <div>
+                <label htmlFor="cooperationLength" className="block text-gray-300 font-medium mb-2">
+                  Jak dlouhou spolupráci si celkově představuješ?
+                </label>
+                <input
+                  type="text"
+                  id="cooperationLength"
+                  name="cooperationLength"
+                  value={formData.cooperationLength}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  style={{ backgroundColor: 'rgb(29, 32, 37)' }}
+                  placeholder="Např. 3 měsíce, půl roku..."
+                />
+              </div>
+            </div>
+
+            {/* Primary Goal 90 Days */}
             <div>
-              <label htmlFor="dietaryHabits" className="block text-gray-300 font-medium mb-2">
-                Jaké máš stravovací návyky? Alergie? Co ti chutná/nechutná?
+              <label htmlFor="primaryGoal90Days" className="block text-gray-300 font-medium mb-2">
+                Jaký je tvůj primární cíl pro následujících 90 dní? (Buď co nejvíce konkrétní)
               </label>
               <textarea
-                id="dietaryHabits"
-                name="dietaryHabits"
-                value={formData.dietaryHabits}
+                id="primaryGoal90Days"
+                name="primaryGoal90Days"
+                value={formData.primaryGoal90Days}
                 onChange={handleChange}
-                rows={6}
+                rows={4}
                 className="w-full px-4 py-3 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 resize-y"
                 style={{ backgroundColor: 'rgb(29, 32, 37)' }}
-                placeholder="Kolikrát denně jíš, zda sleduješ macra, zda sleduješ kalorie, co ti chutná, co ti nechutná, alergie, etc."
+                placeholder="Popiš svůj hlavní cíl co nejkonkrétněji..."
               />
             </div>
 
@@ -309,7 +312,7 @@ export default function Contact() {
               />
               <label htmlFor="consent" className="text-gray-300 text-sm md:text-base cursor-pointer">
                 Souhlasím se{' '}
-                <a href="#" className="text-blue-500 hover:text-blue-400 underline">
+                <a href="/podminky" target="_blank" className="text-blue-500 hover:text-blue-400 underline">
                   smluvními podmínkami a zásadami ochrany osobních údajů
                 </a>
               </label>

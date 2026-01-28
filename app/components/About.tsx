@@ -8,7 +8,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: '-100px' })
 
   return (
-    <section id="o-mne" ref={ref} className="py-20 md:py-32 relative">
+    <section id="o-mne" ref={ref} className="pt-20 md:pt-32 pb-20 md:pb-32 relative">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Image - First on mobile, second on desktop */}
@@ -39,9 +39,9 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-gray-400 text-sm sm:text-base lg:text-[22px] font-medium tracking-wider uppercase"
+              className="text-gray-400 text-sm sm:text-base lg:text-[22px] font-medium tracking-wider"
             >
-              O MNĚ
+              O mně
             </motion.p>
 
             {/* Main Heading */}
