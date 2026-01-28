@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import { Play, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 // Generate avatar URLs for social proof
 const generateAvatarUrl = (seed: string) => {
@@ -24,14 +24,8 @@ const navigationItems = [
 ]
 
 export default function Hero() {
-  const [videoStarted, setVideoStarted] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const videoId = '7rQAqhiVE18'
-  const thumbnailUrl = '/thumbnail.jpg' // Nahrajte obrázek do public/thumbnail.jpg
-
-  const handlePlayVideo = () => {
-    setVideoStarted(true)
-  }
 
   const handleNavClick = (href: string) => {
     setIsMenuOpen(false)
@@ -257,41 +251,14 @@ export default function Hero() {
             className="w-full max-w-4xl mx-auto rounded-2xl overflow-hidden"
           >
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-              {!videoStarted ? (
-                <div 
-                  className="absolute top-0 left-0 w-full h-full rounded-2xl cursor-pointer group"
-                  onClick={handlePlayVideo}
-                >
-                  {/* Thumbnail */}
-                  <img
-                    src={thumbnailUrl}
-                    alt="Video thumbnail"
-                    className="w-full h-full object-cover rounded-2xl"
-                  />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-200 rounded-2xl flex items-center justify-center">
-                    {/* Play Button */}
-                    <div className="w-20 h-20 md:w-24 md:h-24 bg-white/90 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-200">
-                      <Play className="w-10 h-10 md:w-12 md:h-12 text-black ml-1" fill="black" />
-                    </div>
-                  </div>
-                  {/* Sound Info */}
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-full">
-                    <p className="text-white text-xs md:text-sm font-medium">
-                      Zvuk se zapne při kliknutí
-                    </p>
-                  </div>
-                </div>
-              ) : (
-                <iframe
-                  className="absolute top-0 left-0 w-full h-full rounded-2xl"
-                  src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&si=_0ugcEKZ7HyfSNUg`}
-                  title="YouTube video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
-              )}
+              <iframe
+                className="absolute top-0 left-0 w-full h-full rounded-2xl"
+                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&rel=0`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
             </div>
           </motion.div>
         </div>
