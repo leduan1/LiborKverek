@@ -1,8 +1,8 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import { useState, useRef, useEffect } from 'react'
+import { Menu, X, Volume2, VolumeX } from 'lucide-react'
 
 // Generate avatar URLs for social proof
 const generateAvatarUrl = (seed: string) => {
@@ -23,9 +23,70 @@ const navigationItems = [
   { label: 'Kontakt', href: '#kontakt' },
 ]
 
+declare global {
+  interface Window {
+    YT: any
+    onYouTubeIframeAPIReady: () => void
+  }
+}
+
 export default function Hero() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const videoId = '7rQAqhiVE18'
+  const [isMuted, setIsMuted] = useState(true)
+  const playerRef = useRef<any>(null)
+  const videoId = 'FqgtMT882_U'
+
+  useEffect(() => {
+    // Load YouTube IFrame API
+    const tag = document.createElement('script')
+    tag.src = 'https://www.youtube.com/iframe_api'
+    const firstScriptTag = document.getElementsByTagName('script')[0]
+    firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag)
+
+    window.onYouTubeIframeAPIReady = () => {
+      playerRef.current = new window.YT.Player('youtube-player', {
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          loop: 1,
+          playlist: videoId,
+          controls: 0,
+          rel: 0,
+          showinfo: 0,
+          modestbranding: 1,
+          playsinline: 1,
+        },
+        events: {
+          onReady: (event: any) => {
+            event.target.playVideo()
+          },
+        },
+      })
+    }
+
+    // If API is already loaded
+    if (window.YT && window.YT.Player) {
+      window.onYouTubeIframeAPIReady()
+    }
+
+    return () => {
+      if (playerRef.current) {
+        playerRef.current.destroy()
+      }
+    }
+  }, [])
+
+  const toggleMute = () => {
+    if (playerRef.current) {
+      if (isMuted) {
+        playerRef.current.unMute()
+      } else {
+        playerRef.current.mute()
+      }
+      setIsMuted(!isMuted)
+    }
+  }
 
   const handleNavClick = (href: string) => {
     setIsMenuOpen(false)
@@ -248,18 +309,29 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="w-full max-w-4xl mx-auto rounded-2xl overflow-hidden"
+            className="w-full max-w-4xl mx-auto rounded-2xl overflow-hidden relative"
           >
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-              <iframe
+              <div
+                id="youtube-player"
                 className="absolute top-0 left-0 w-full h-full rounded-2xl"
-                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&rel=0`}
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
               />
             </div>
+            {/* Mute/Unmute Button */}
+            <button
+              onClick={toggleMute}
+              className="absolute bottom-4 right-4 z-20 bg-black/70 hover:bg-black/90 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-200 flex items-center gap-2"
+              aria-label={isMuted ? 'Zapnout zvuk' : 'Vypnout zvuk'}
+            >
+              {isMuted ? (
+                <>
+                  <VolumeX size={24} />
+                  <span className="text-sm font-medium pr-1">Zapnout zvuk</span>
+                </>
+              ) : (
+                <Volume2 size={24} />
+              )}
+            </button>
           </motion.div>
         </div>
       </div>
