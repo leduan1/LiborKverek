@@ -4,14 +4,20 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useRef, useEffect } from 'react'
 import { Menu, X, Volume2, VolumeX } from 'lucide-react'
 
-// Generate avatar URLs for social proof
-const generateAvatarUrl = (seed: string) => {
-  return `https://api.dicebear.com/7.x/avataaars/svg?seed=${seed}`
-}
-
-const avatarSeeds = [
-  'alice', 'bob', 'charlie', 'diana', 'eve', 'frank', 'grace', 'henry', 
-  'ivy', 'jack', 'kate', 'liam', 'mia', 'noah', 'olivia', 'paul'
+// Real people avatars for social proof
+const avatarUrls = [
+  'https://randomuser.me/api/portraits/men/32.jpg',
+  'https://randomuser.me/api/portraits/women/44.jpg',
+  'https://randomuser.me/api/portraits/men/75.jpg',
+  'https://randomuser.me/api/portraits/women/68.jpg',
+  'https://randomuser.me/api/portraits/men/43.jpg',
+  'https://randomuser.me/api/portraits/women/26.jpg',
+  'https://randomuser.me/api/portraits/men/91.jpg',
+  'https://randomuser.me/api/portraits/women/89.jpg',
+  'https://randomuser.me/api/portraits/men/22.jpg',
+  'https://randomuser.me/api/portraits/women/33.jpg',
+  'https://randomuser.me/api/portraits/men/55.jpg',
+  'https://randomuser.me/api/portraits/women/12.jpg',
 ]
 
 const navigationItems = [
@@ -252,15 +258,15 @@ export default function Hero() {
             <div className="bg-black rounded-2xl px-6 py-4 flex items-center gap-4" style={{ boxShadow: '0 1px 14px #fff3' }}>
               {/* Avatars */}
               <div className="flex -space-x-2">
-                {avatarSeeds.slice(0, 12).map((seed, index) => (
+                {avatarUrls.map((url, index) => (
                   <div
-                    key={seed}
+                    key={index}
                     className="w-8 h-8 rounded-full border-2 border-black overflow-hidden bg-gray-700"
-                    style={{ zIndex: avatarSeeds.length - index }}
+                    style={{ zIndex: avatarUrls.length - index }}
                   >
                     <img
-                      src={generateAvatarUrl(seed)}
-                      alt={`Avatar ${index + 1}`}
+                      src={url}
+                      alt={`Klient ${index + 1}`}
                       className="w-full h-full object-cover"
                     />
                   </div>
