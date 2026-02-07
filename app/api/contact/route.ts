@@ -3,6 +3,11 @@ import { Resend } from 'resend'
 
 export async function POST(request: NextRequest) {
   try {
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not set')
+      return NextResponse.json({ error: 'Konfigurace serveru chybí' }, { status: 500 })
+    }
+
     const resend = new Resend(process.env.RESEND_API_KEY)
 
     const body = await request.json()
