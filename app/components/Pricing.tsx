@@ -117,7 +117,7 @@ export default function Pricing() {
               </ul>
 
               <motion.a
-                href="#"
+                href="#kontakt"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`block w-full text-center px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 ${

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -26,6 +27,18 @@ export default function RootLayout({
     <html lang="cs" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://api.dicebear.com" />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-NK71LJNY70"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-NK71LJNY70');
+          `}
+        </Script>
       </head>
       <body className="antialiased" suppressHydrationWarning>{children}</body>
     </html>

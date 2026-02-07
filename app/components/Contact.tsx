@@ -56,11 +56,48 @@ export default function Contact() {
     }
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Zde bude logika pro odeslání formuláře
-    console.log('Form submitted:', formData)
-    // TODO: Přidat odesílání formuláře
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({
+          service: '',
+          fullName: '',
+          email: '',
+          phone: '',
+          age: '',
+          height: '',
+          weight: '',
+          currentGoals: '',
+          primaryGoal90Days: '',
+          startDate: '',
+          cooperationLength: '',
+          consent: false,
+        })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Submit error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -89,10 +126,12 @@ export default function Contact() {
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
-          <motion.form
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
+          >
+          <form
             onSubmit={handleSubmit}
             className="space-y-6"
           >
@@ -321,11 +360,25 @@ export default function Contact() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-lg rounded-xl transition-colors duration-200"
+              disabled={isSubmitting}
+              className="w-full px-6 py-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 disabled:cursor-not-allowed text-white font-semibold text-lg rounded-xl transition-colors duration-200"
             >
-              Odeslat
+              {isSubmitting ? 'Odesílám...' : 'Odeslat'}
             </button>
-          </motion.form>
+
+            {/* Status Messages */}
+            {submitStatus === 'success' && (
+              <div className="p-4 bg-green-600/20 border border-green-500 rounded-xl text-green-400 text-center">
+                Formulář byl úspěšně odeslán! Brzy se ti ozvu.
+              </div>
+            )}
+            {submitStatus === 'error' && (
+              <div className="p-4 bg-red-600/20 border border-red-500 rounded-xl text-red-400 text-center">
+                Při odesílání došlo k chybě. Zkus to prosím znovu nebo mě kontaktuj přímo.
+              </div>
+            )}
+          </form>
+          </motion.div>
         </div>
       </div>
     </section>
