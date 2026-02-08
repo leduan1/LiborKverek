@@ -185,62 +185,43 @@ export default function Hero() {
         </motion.button>
         </div>
 
-        {/* Mobile/Tablet Menu */}
+        {/* Mobile/Tablet Menu - Compact dropdown */}
         <AnimatePresence>
           {isMenuOpen && (
-            <>
-              {/* Backdrop */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 lg:hidden"
-                onClick={() => setIsMenuOpen(false)}
-              />
-              
-              {/* Menu Panel */}
-              <motion.nav
-                initial={{ x: '100%' }}
-                animate={{ x: 0 }}
-                exit={{ x: '100%' }}
-                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className="fixed top-20 right-4 w-[calc(100%-2rem)] max-w-sm bg-black/95 backdrop-blur-md rounded-2xl p-6 z-40 lg:hidden shadow-2xl"
-                style={{ boxShadow: '0 1px 14px #fff3' }}
-              >
-                <div className="flex flex-col gap-4">
-                  {navigationItems.map((item, index) => (
-                    <motion.a
-                      key={item.href}
-                      href={item.href}
-                      onClick={(e) => {
-                        e.preventDefault()
-                        handleNavClick(item.href)
-                      }}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                      className="text-white/80 hover:text-white text-lg font-medium py-3 px-4 rounded-xl hover:bg-white/10 transition-all duration-200 border-b border-white/10 last:border-0"
-                    >
-                      {item.label}
-                    </motion.a>
-                  ))}
-                  <motion.a
-                    href="#kontakt"
+            <motion.nav
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="mt-2 mx-auto bg-black/95 backdrop-blur-md rounded-xl p-3 lg:hidden"
+              style={{ boxShadow: '0 1px 14px #fff3' }}
+            >
+              <div className="flex flex-wrap gap-2 justify-center">
+                {navigationItems.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
                     onClick={(e) => {
                       e.preventDefault()
-                      handleNavClick('#kontakt')
+                      handleNavClick(item.href)
                     }}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: navigationItems.length * 0.05 }}
-                    className="mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl text-center transition-colors duration-200"
+                    className="text-white/80 hover:text-white text-sm font-medium py-2 px-3 rounded-lg hover:bg-white/10 transition-all duration-200"
                   >
-                    Mám zájem
-                  </motion.a>
-                </div>
-              </motion.nav>
-            </>
+                    {item.label}
+                  </a>
+                ))}
+                <a
+                  href="#kontakt"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleNavClick('#kontakt')
+                  }}
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors duration-200"
+                >
+                  Mám zájem
+                </a>
+              </div>
+            </motion.nav>
           )}
         </AnimatePresence>
       </header>
@@ -253,15 +234,15 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-12 flex items-center justify-center"
+            className="mb-8 sm:mb-12 flex items-center justify-center"
           >
-            <div className="bg-black rounded-2xl px-6 py-4 flex items-center gap-4" style={{ boxShadow: '0 1px 14px #fff3' }}>
-              {/* Avatars */}
-              <div className="flex -space-x-2">
-                {avatarUrls.map((url, index) => (
+            <div className="bg-black rounded-xl sm:rounded-2xl px-3 sm:px-6 py-2 sm:py-4 flex items-center gap-2 sm:gap-4" style={{ boxShadow: '0 1px 14px #fff3' }}>
+              {/* Avatars - show fewer on mobile */}
+              <div className="flex -space-x-1 sm:-space-x-2">
+                {avatarUrls.slice(0, 6).map((url, index) => (
                   <div
                     key={index}
-                    className="w-8 h-8 rounded-full border-2 border-black overflow-hidden bg-gray-700"
+                    className={`w-5 h-5 sm:w-8 sm:h-8 rounded-full border border-black sm:border-2 overflow-hidden bg-gray-700 ${index >= 4 ? 'hidden sm:block' : ''}`}
                     style={{ zIndex: avatarUrls.length - index }}
                   >
                     <img
@@ -273,8 +254,9 @@ export default function Hero() {
                 ))}
               </div>
               {/* Text */}
-              <span className="text-white text-sm sm:text-base font-medium whitespace-nowrap">
-                Připoj se ke 500+ klientům kteří přeměnili své tělo
+              <span className="text-white text-xs sm:text-base font-medium">
+                <span className="sm:hidden">500+ spokojených klientů</span>
+                <span className="hidden sm:inline">Připoj se ke 500+ klientům kteří přeměnili své tělo</span>
               </span>
             </div>
           </motion.div>
