@@ -118,7 +118,7 @@ export default function ValueProps() {
                     )}
                   </p>
                   <a
-                    href={`#kontakt?plan=${plan.slug}`}
+                    href={`?plan=${plan.slug}#kontakt`}
                     className="w-full px-6 py-3 bg-blue-600 hover:opacity-90 text-white font-medium rounded-2xl flex items-center justify-center gap-2 transition-opacity duration-200 cursor-pointer"
                   >
                     MÁM ZÁJEM
