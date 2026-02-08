@@ -96,16 +96,16 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="mt-2 mx-auto bg-black/95 backdrop-blur-md rounded-xl p-3 lg:hidden"
+            className="mt-2 bg-black/95 backdrop-blur-md rounded-xl p-3 lg:hidden"
             style={{ boxShadow: '0 1px 14px #fff3' }}
           >
-            <div className="flex flex-wrap gap-2 justify-center">
+            <div className="flex flex-col gap-1">
               {navigationItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-white/80 hover:text-white text-sm font-medium py-2 px-3 rounded-lg hover:bg-white/10 transition-all duration-200"
+                  className="text-white/80 hover:text-white text-sm font-medium py-2 px-3 rounded-lg hover:bg-white/10 transition-all duration-200 text-left"
                 >
                   {item.label}
                 </Link>
@@ -113,7 +113,7 @@ export default function Header() {
               <Link
                 href="/#kontakt"
                 onClick={() => setIsMenuOpen(false)}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors duration-200"
+                className="mt-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 text-center"
               >
                 Mám zájem
               </Link>
