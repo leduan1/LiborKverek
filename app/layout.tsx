@@ -3,14 +3,34 @@ import Script from 'next/script'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Libor Kverek - Fitness Mentoring',
-  description: 'Růst vašeho fitness podnikání pomocí systémů a strategií, které jsem osobně použil k dosažení 8-místných tržeb.',
-  keywords: ['fitness', 'mentoring', 'online podnikání', 'fitness kouč', 'business'],
+  metadataBase: new URL('https://liborkverek.vercel.app'),
+  title: 'Libor Kverek | Online Fitness Kouč & Mentor',
+  description: 'Pomáhám lidem dosáhnout jejich fitness cílů pomocí individuálního online koučinku. Více než 500+ spokojených klientů a prokazatelné výsledky.',
+  keywords: ['fitness', 'online kouč', 'osobní trenér', 'hubnutí', 'nabírání svalů', 'fitness mentoring', 'Libor Kverek'],
   authors: [{ name: 'Libor Kverek' }],
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+  },
   openGraph: {
-    title: 'Libor Kverek - Fitness Mentoring',
-    description: 'Růst vašeho fitness podnikání pomocí systémů a strategií',
+    title: 'Libor Kverek | Online Fitness Kouč & Mentor',
+    description: 'Pomáhám lidem dosáhnout jejich fitness cílů pomocí individuálního online koučinku. Více než 500+ spokojených klientů.',
     type: 'website',
+    images: [
+      {
+        url: '/IMG_9932.PNG',
+        width: 1200,
+        height: 630,
+        alt: 'Libor Kverek - Online Fitness Kouč',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Libor Kverek | Online Fitness Kouč & Mentor',
+    description: 'Pomáhám lidem dosáhnout jejich fitness cílů pomocí individuálního online koučinku.',
+    images: ['/IMG_9932.PNG'],
   },
   robots: {
     index: true,
@@ -39,6 +59,29 @@ export default function RootLayout({
             gtag('config', 'G-NK71LJNY70');
           `}
         </Script>
+        <Script id="facebook-pixel" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window,document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1981621535752632');
+            fbq('track', 'PageView');
+          `}
+        </Script>
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: 'none' }}
+            src="https://www.facebook.com/tr?id=1981621535752632&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
       </head>
       <body className="antialiased" suppressHydrationWarning>{children}</body>
     </html>

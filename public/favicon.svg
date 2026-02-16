@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="barGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="weightGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#1e3a8a"/>
+    </linearGradient>
+  </defs>
+  <!-- Bar -->
+  <rect x="15" y="46" width="70" height="8" rx="2" fill="url(#barGradient)"/>
+  <!-- Left outer weight -->
+  <rect x="8" y="32" width="10" height="36" rx="3" fill="url(#weightGradient)"/>
+  <!-- Left inner weight -->
+  <rect x="20" y="38" width="8" height="24" rx="2" fill="url(#weightGradient)"/>
+  <!-- Right inner weight -->
+  <rect x="72" y="38" width="8" height="24" rx="2" fill="url(#weightGradient)"/>
+  <!-- Right outer weight -->
+  <rect x="82" y="32" width="10" height="36" rx="3" fill="url(#weightGradient)"/>
+</svg>
