@@ -4,7 +4,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://liborkverek.vercel.app'),
-  title: 'Libor Kverek | Online Fitness Kouč & Mentor',
+  title: 'Online Coaching | Libor Kverek',
   description: 'Pomáhám lidem dosáhnout jejich fitness cílů pomocí individuálního online koučinku. Více než 500+ spokojených klientů a prokazatelné výsledky.',
   keywords: ['fitness', 'online kouč', 'osobní trenér', 'hubnutí', 'nabírání svalů', 'fitness mentoring', 'Libor Kverek'],
   authors: [{ name: 'Libor Kverek' }],
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: 'Libor Kverek | Online Fitness Kouč & Mentor',
+    title: 'Online Coaching | Libor Kverek',
     description: 'Pomáhám lidem dosáhnout jejich fitness cílů pomocí individuálního online koučinku. Více než 500+ spokojených klientů.',
     type: 'website',
     images: [
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Libor Kverek | Online Fitness Kouč & Mentor',
+    title: 'Online Coaching | Libor Kverek',
     description: 'Pomáhám lidem dosáhnout jejich fitness cílů pomocí individuálního online koučinku.',
     images: ['/IMG_9932.PNG'],
   },
