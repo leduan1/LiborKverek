@@ -146,6 +146,7 @@ export default function Contact() {
                   name="service"
                   value={formData.service}
                   onChange={handleChange}
+                  required
                   className="w-full px-4 py-3 border border-gray-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-600 appearance-none cursor-pointer"
                   style={{ backgroundColor: 'rgb(29, 32, 37)' }}
                 >
